@@ -49,7 +49,7 @@ git clone https://github.com/l5partanl/portfolio-front.git
 
 ### ▶️ Setup Frontend
 ```bash
-cd portfolio-frontend
+cd portfolio-front
 npm install
 ng serve
 ```
