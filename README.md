@@ -1,3 +1,62 @@
+# 📁 Portfolio — Gian Caorlin
+
+## 👋 Welcome
+
+This is my personal portfolio project.
+It presents my professional profile as a **Full-Stack Developer / Designer**, using:
+
+- ⚙️ **Angular** for the frontend  
+- ⚙️ **Express.js + Node.js** for the backend  
+- ⚙️ **MongoDB Atlas** for the database  
+
+Everything is integrated into a full web application and deployed to the cloud.
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- [Angular](https://angular.io/)
+- HTML5 + SCSS
+- Angular Routing & Services
+- Firebase Hosting
+
+### Backend
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- MongoDB via Mongoose
+- Deployed on [Render](https://render.com)
+
+### Database
+- [MongoDB Atlas](https://www.mongodb.com/atlas)
+
+---
+
+## 📁 Project Structure
+
+```bash
+/portfolio-front     # Angular frontend application
+/portfolio-back      # Express backend API
+/README.md           # This file
+```
+
+## 🛠️ Running Locally
+
+### ▶️ Clone the repository
+```bash
+git clone https://github.com/l5partanl/portfolio-front.git
+```
+
+### ▶️ Setup Frontend
+```bash
+cd portfolio-frontend
+npm install
+ng serve
+```
+
+⚠️ Make sure to create a .env file inside portfolio-backend/ with your MongoDB connection string and any other required environment variables.
+
+
 # PortfolioFront
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
