@@ -1,0 +1,46 @@
+.project-card {
+    border: 1px solid #5c3a00;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f9f7f1;
+    box-shadow: 2px 2px 0 #5c3a00;
+  }
+  
+  .project-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-right: 1rem;
+    border: 1px solid #5c3a00;
+  }
+  
+  .project-content {
+    flex: 1;
+  }
+  
+  .tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background-color: #d8d2c4;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+  
+  .links {
+    margin-top: 1rem;
+    a {
+      margin-right: 1rem;
+      color: #5c3a00;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+  

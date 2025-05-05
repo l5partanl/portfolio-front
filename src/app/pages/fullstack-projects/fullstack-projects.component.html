@@ -1,0 +1,14 @@
+<section class="container py-5">
+    <h2 class="mb-4 text-center">⚡ Full-stack projects</h2>
+    <p class="text-center mb-5">
+        These are some of the full-stack applications I’ve built recently, combining frontend and backend technologies.
+    </p>
+
+    <div class="row gy-4">
+        @for (project of projects; track project.title) {
+        <div class="col-12 col-md-6">
+            <app-project-card [project]="project"></app-project-card>
+        </div>
+        }
+    </div>
+</section>
