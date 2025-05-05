@@ -1,26 +1,40 @@
-<div class="project-card">
-    <img [src]="project.imageUrl" alt="{{ project.title }}" class="project-image" />
-
-    <div class="project-content">
-        <h3>⚡ {{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-
-        <div class="tags">
-            @for (tag of project.tags; track tag) {
-            <span class="tag d-inline-flex align-items-center gap-1">
-                <img [src]="getIconPath(tag)" class="icon" alt="{{ tag }} icon" />
-                {{ tag }}
-            </span>
-            }
+<div class="project-card container border border-2 p-3 rounded mb-5">
+    <div class="row g-4 align-items-start">
+        <!-- Imagen o Inception -->
+        <div class="col-12 col-md-5">
+            <div class="project-media">
+                @if (project.imageUrl === 'INCEPTION') {
+                <app-inception-frame></app-inception-frame>
+                } @else {
+                <img [src]="project.imageUrl" alt="{{ project.title }}" />
+                }
+            </div>
         </div>
 
-        <div class="links">
-            @if (project.liveLink) {
-            <a [href]="project.liveLink" target="_blank">Live project</a>
-            }
-            @if (project.github) {
-            <a [href]="project.github" target="_blank">Github readme</a>
-            }
+        <!-- Contenido -->
+        <div class="col-12 col-md-7 d-flex flex-column justify-content-between h-100">
+            <div>
+                <h3 class="fw-semibold mb-2">⚡ {{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+
+                <div class="tags d-flex flex-wrap gap-2 my-3">
+                    @for (tag of project.tags; track tag) {
+                    <span class="tag badge text-dark bg-light d-inline-flex align-items-center gap-2 px-3 py-2">
+                        <img [src]="getIconPath(tag)" class="icon" alt="{{ tag }} icon" style="height: 1rem;" />
+                        {{ tag }}
+                    </span>
+                    }
+                </div>
+            </div>
+
+            <div class="links d-flex gap-4 mt-3">
+                @if (project.liveLink) {
+                <a [href]="project.liveLink" target="_blank" class="text-decoration-underline">Live project</a>
+                }
+                @if (project.github) {
+                <a [href]="project.github" target="_blank" class="text-decoration-underline">GitHub readme</a>
+                }
+            </div>
         </div>
     </div>
 </div>

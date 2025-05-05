@@ -1,53 +1,84 @@
 .project-card {
-    border: 1px solid #5c3a00;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #f9f7f1;
-    box-shadow: 2px 2px 0 #5c3a00;
-  }
-  
-  .project-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    margin-right: 1rem;
-    border: 1px solid #5c3a00;
-  }
-  
-  .project-content {
-    flex: 1;
-  }
-  
-  .tags {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .tag {
-    background-color: #d8d2c4;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-  }
-  
-  .links {
-    margin-top: 1rem;
-    a {
-      margin-right: 1rem;
-      color: #5c3a00;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-  }
-  
-  .icon {
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-    filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.2));
-  }
-  
+  background-color: #f9f7f1;
+  border: 1px solid #5c3a00;
+  box-shadow: 2px 2px 0 #5c3a00;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.project-image,
+app-inception-frame {
+  width: 100%;
+  border: 1px solid #5c3a00;
+  border-radius: 8px;
+  box-shadow: 1px 1px 0 #5c3a00;
+}
+
+.project-content h3 {
+  font-weight: 600;
+  color: #5c3a00;
+  margin-bottom: 0.5rem;
+}
+
+.project-content p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.tags {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #d8d2c4;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.links a {
+  color: #5c3a00;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.2));
+}
+
+.project-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid #5c3a00;
+  border-radius: 8px;
+  background-color: #eae4d7;
+  box-shadow: 1px 1px 0 #5c3a00;
+}
+
+.project-media img,
+.project-media app-inception-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
