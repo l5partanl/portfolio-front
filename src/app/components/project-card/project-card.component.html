@@ -7,8 +7,9 @@
 
         <div class="tags">
             @for (tag of project.tags; track tag) {
-            <span class="tag">
-                <i [ngClass]="getIconClass(tag)" class="me-1"></i> {{ tag }}
+            <span class="tag d-inline-flex align-items-center gap-1">
+                <img [src]="getIconPath(tag)" class="icon" alt="{{ tag }} icon" />
+                {{ tag }}
             </span>
             }
         </div>

@@ -19,32 +19,32 @@ export interface Project {
 export class ProjectCardComponent {
 	@Input() project!: Project;
 
-	getIconClass(tag: string): string {
-		switch (tag.toLowerCase()) {
-		  case 'angular':
-			return 'fab fa-angular text-danger';
-		  case 'react':
-			return 'fab fa-react text-info';
-		  case 'node.js':
-		  case 'node':
-			return 'fab fa-node-js text-success';
-		  case 'mongodb':
-			return 'fas fa-database text-success';
-		  case 'firebase':
-			return 'fas fa-fire text-warning';
-		  case 'express':
-			return 'fas fa-server text-secondary';
-		  case 'typescript':
-			return 'fas fa-code text-primary';
-		  case 'javascript':
-			return 'fab fa-js text-warning';
-		  case 'html':
-			return 'fab fa-html5 text-danger';
-		  case 'css':
-			return 'fab fa-css3-alt text-primary';
-		  default:
-			return 'fas fa-code';
-		}
+	getIconPath(tag: string): string {
+		const iconMap: { [key: string]: string } = {
+			'angular': 'https://www.svgrepo.com/download/452156/angular.svg',
+			'react': 'https://www.svgrepo.com/download/452092/react.svg',
+			'node.js': 'https://www.svgrepo.com/download/378837/node.svg',
+			'node': 'https://www.svgrepo.com/download/452075/nodejs.svg',
+			'mongodb': 'https://www.svgrepo.com/download/331488/mongodb.svg',
+			'firebase': 'https://www.svgrepo.com/download/373595/firebase.svg',
+			'express': 'https://www.svgrepo.com/download/474391/node.svg',
+			'typescript': 'https://www.svgrepo.com/download/349540/typescript.svg',
+			'javascript': 'https://www.svgrepo.com/download/349419/javascript.svg',
+		  'solidworks': 'https://www.svgrepo.com/show/508968/solidworks.svg',
+		  'blender': 'https://www.svgrepo.com/show/353488/blender.svg',
+		  'autocad': 'https://www.svgrepo.com/show/452163/autodesk.svg',
+		  'adobe illustrator': 'https://www.svgrepo.com/show/452147/adobe-illustrator.svg',
+		  'illustrator': 'https://www.svgrepo.com/show/452147/adobe-illustrator.svg',
+		  'adobe photoshop': 'https://www.svgrepo.com/show/452149/adobe-photoshop.svg',
+		  'photoshop': 'https://www.svgrepo.com/show/452149/adobe-photoshop.svg',
+		  'sketching': 'https://www.svgrepo.com/show/263211/pencil.svg',
+		  'qa/qc': 'https://www.svgrepo.com/show/530156/question-and-answer.svg',
+		  'project management': 'https://www.svgrepo.com/show/375483/project.svg',
+		  'rendering': 'https://www.svgrepo.com/show/184284/picture.svg',
+		};
+	  
+		const normalized = tag.toLowerCase();
+		return iconMap[normalized] || 'https://www.svgrepo.com/show/452004/tag.svg'; // genérico
 	  }
 	  
 }
