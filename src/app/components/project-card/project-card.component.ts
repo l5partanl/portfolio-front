@@ -21,6 +21,27 @@ export class ProjectCardComponent {
 	@Input() project!: Project;
 	@Input() index!: number;
 
+	getFrameType(i: number): "mobile" | "mobile1" | "mobile2" {
+		const types = ["mobile", "mobile1", "mobile2"];
+		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		return types[i % types.length] as any;
+	}
+
+	getFrameUrl(i: number): string {
+		const urls = {
+			mobile:
+				"https://png.pngtree.com/png-vector/20241203/ourmid/pngtree-mobile-phone-frame-photo-png-image_14568670.png",
+
+			mobile1:
+				"https://png.pngtree.com/png-vector/20241203/ourmid/pngtree-mobile-phone-frame-photo-png-image_14568670.png",
+
+			mobile2:
+				"https://png.pngtree.com/png-vector/20241203/ourmid/pngtree-mobile-phone-frame-photo-png-image_14568670.png",
+		};
+		const type = this.getFrameType(i);
+		return urls[type];
+	}
+
 	getIconPath(tag: string): string {
 		const iconMap: { [key: string]: string } = {
 			angular: "https://www.svgrepo.com/download/452156/angular.svg",

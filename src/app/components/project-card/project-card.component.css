@@ -1,9 +1,40 @@
-.project-card {
-  background-color: var(--primary-bg);
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
+.device-frame {
+  position: relative;
   width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+}
+
+.device-frame .project-image,
+.device-frame app-inception-frame {
+  position: absolute;
+  top:8.2%;
+  left: 2%;
+  width: 96%;
+  height: 83%;
+  object-fit: cover;
+  border-radius: 20px;
+  z-index: 1;
+  display: block;
+}
+
+.device-frame .frame-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Rotación solo en mockups verticales */
+.device-frame.mobile .frame-overlay,
+.device-frame.mobile1 .frame-overlay,
+.device-frame.mobile2 .frame-overlay {
+  transform: rotate(90deg) scale(1.9);
+  transform-origin: center;
 }
 
 .project-card .row {
@@ -14,89 +45,4 @@
 
 .project-card.reverse .row {
   flex-direction: row-reverse;
-}
-
-/* Media */
-.project-media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background-color: var(--secondary-bg);
-  border-radius: 0;
-}
-
-.project-media img,
-.project-media app-inception-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Texto y contenido */
-.project-card h3 {
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.project-card p {
-  color: var(--text-dark);
-  margin-bottom: 1rem;
-}
-
-/* Tags */
-.tags {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag {
-  background-color: var(--tag-bg);
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-  vertical-align: middle;
-  filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.2));
-}
-
-/* Links */
-.links {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.links a {
-  color: var(--primary-color);
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-/* Responsive: stack media and content */
-@media (max-width: 768px) {
-  .project-card .row {
-    flex-direction: column;
-  }
-
-  .project-card.reverse .row {
-    flex-direction: column;
-  }
-
-  .project-card {
-    padding: 1rem;
-  }
 }
