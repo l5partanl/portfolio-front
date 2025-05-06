@@ -17,10 +17,8 @@
 
         <section class="container py-5">
             <div class="row gy-4">
-                @for (project of projects; track project.title) {
-                <div class="col-12 col-md-6">
-                    <app-project-card [project]="project"></app-project-card>
-                </div>
+                @for (project of projects; track project.title; let i = $index) {
+                <app-project-card [project]="project" [index]="i"></app-project-card>
                 }
             </div>
         </section>

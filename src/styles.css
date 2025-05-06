@@ -1,5 +1,7 @@
 :root {
     --primary-color: #5c3a00;
+    --primary-bg: #f9f7f1;
+    --secondary-bg: #eae4d7;
     --primary-hover: #7a5017;
     --secondary-color: #fff8ef;
     --accent-color: #fff4e5;
@@ -7,4 +9,10 @@
     --text-light: white;
     --shadow-light: rgba(0, 0, 0, 0.15);
     --shadow-medium: rgba(0, 0, 0, 0.2);
+    --tag-bg: #d8d2c4;
+    --text-dark: #333;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
   }

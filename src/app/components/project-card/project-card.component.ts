@@ -19,6 +19,7 @@ export interface Project {
 })
 export class ProjectCardComponent {
 	@Input() project!: Project;
+	@Input() index!: number;
 
 	getIconPath(tag: string): string {
 		const iconMap: { [key: string]: string } = {
