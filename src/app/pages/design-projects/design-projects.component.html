@@ -1,15 +1,29 @@
 <section class="container py-5">
-    <h2 class="mb-4 text-center">🎨 Industrial Design Projects</h2>
-    <p class="text-center mb-5">
-        A selection of projects from my work as an industrial designer, ranging from clean room layouts to 3D product
-        visualization.
-    </p>
+    <!-- fade in -->
+    @if (!showMainContent) {
+    <div class="section-intro">
+        <h1>Industrial Design Projects</h1>
+    </div>
+    }
+    <!-- fade out -->
 
-    <div class="row gy-4">
-        @for (project of projects; track project.title) {
-        <div class="col-12 col-md-6">
-            <app-project-card [project]="project"></app-project-card>
-        </div>
-        }
+    <!-- CONTENIDO SIEMPRE EN EL DOM, PERO CON CLASES CONDICIONALES -->
+    <div class="{{ showMainContent ? 'fade-in' : 'hidden' }}">
+        <h2 class="mb-4 text-center">🎨 Industrial Design Projects</h2>
+        <p class="text-center mb-5">
+            A selection of projects from my work as an industrial designer, ranging from clean room layouts to 3D
+            product
+            visualization.
+        </p>
+
+        <section class="container py-5">
+            <div class="row gy-4">
+                @for (project of projects; track project.title) {
+                <div class="col-12 col-md-6">
+                    <app-project-card [project]="project"></app-project-card>
+                </div>
+                }
+            </div>
+        </section>
     </div>
 </section>

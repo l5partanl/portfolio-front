@@ -3,6 +3,14 @@ body {
   background-color: #f9f7f1;
   background-image: url('https://www.transparenttextures.com/patterns/cardboard-flat.png');
   background-repeat: repeat;
+  animation: textureShift 20s linear infinite;
+  background-position: 0 0;
+  font-family: sans-serif;
+}
+
+@keyframes textureShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
 }
 
 .app-frame {
@@ -16,7 +24,6 @@ body {
     "header header"
     "sidebar main";
   box-sizing: border-box;
-  font-family: sans-serif;
   position: fixed;
   inset: 0;
 }
@@ -24,8 +31,8 @@ body {
 /* HEADER */
 .top-bar {
   grid-area: header;
-  background-color: #fff8ef;
-  border-bottom: 1px solid #5c3a00;
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--primary-color);
   padding: 0 1rem;
   font-size: 0.95rem;
   display: flex;
@@ -36,30 +43,36 @@ body {
 }
 
 .contact-btn {
-  background-color: #5c3a00;
-  color: white;
-  border-radius: 20px;
-  padding: 0.25rem 0.75rem;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-radius: 25px;
+  padding: 0.4rem 1.2rem;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
 }
 
 /* SIDEBAR */
 .side-menu {
   grid-area: sidebar;
-  background-color: #fff4e5;
-  border-right: 1px solid #5c3a00;
-  transition: width 0.3s ease;
-  width: 80px; /* cerrado por defecto */
+  background-color: var(--accent-color);
+  border-right: 1px solid var(--primary-color);
+  transition: width 0.3s ease, background-color 0.3s ease;
+  width: 80px;
   overflow: hidden;
   z-index: 9;
   position: relative;
 }
 
-/* cuando está abierto */
 .side-menu.open {
   width: 240px;
 }
 
-/* contenido del menú */
 .side-menu nav {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -70,6 +83,12 @@ body {
 .side-menu.open nav {
   opacity: 1;
   pointer-events: auto;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .side-menu ul {
@@ -83,16 +102,49 @@ body {
 }
 
 .side-menu a {
-  text-decoration: none;
-  color: #5c3a00;
+  position: relative;
+  display: inline-block;
+  color: var(--primary-color);
   font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.side-menu a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.side-menu a:hover {
+  color: var(--text-dark);
+}
+
+.side-menu a:hover::after {
+  width: 100%;
+}
+
+.social-links {
+  margin-top: 1.5rem;
 }
 
 .social-links a {
-  display: inline-block;
-  margin-right: 1rem;
-  color: #5c3a00;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
   font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--text-dark);
 }
 
 /* HAMBURGUESA */
@@ -104,9 +156,14 @@ body {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #5c3a00;
+  color: var(--primary-color);
   z-index: 2;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 /* MAIN CONTENT */
@@ -115,6 +172,23 @@ body {
   height: 100%;
   overflow-y: auto;
   box-sizing: border-box;
+  transition: filter 0.3s ease;
+}
+
+.app-frame.blur-content .main-content {
+  filter: blur(2px);
+}
+
+/* OVERLAY */
+.menu-overlay {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 5;
 }
 
 /* MOBILE RESPONSIVE */
@@ -166,8 +240,8 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff8ef;
-    border-top: 1px solid #5c3a00;
+    background-color: var(--secondary-color);
+    border-top: 1px solid var(--primary-color);
     text-align: center;
     padding: 0.25rem 0;
     z-index: 1001;
@@ -177,28 +251,7 @@ body {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: #5c3a00;
+    color: var(--primary-color);
     cursor: pointer;
   }
-}
-
-.menu-overlay {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 60px);
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
-  z-index: 5;
-}
-
-
-/* Animación más suave en el contenido */
-.main-content {
-  transition: filter 0.3s ease;
-}
-
-.app-frame.blur-content .main-content {
-  filter: blur(2px);
 }

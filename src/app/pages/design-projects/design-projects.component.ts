@@ -12,8 +12,12 @@ import { ProjectCardComponent } from "../../components/project-card/project-card
 export class DesignProjectsComponent implements OnInit {
 	projects: Project[] = [];
 	projectService = inject(ProjectService);
+	showMainContent = false;
 
 	async ngOnInit(): Promise<void> {
+		setTimeout(() => {
+			this.showMainContent = true;
+		}, 3000);
 		try {
 			const data = await this.projectService.getDesignProjects();
 			this.projects = data;

@@ -1,0 +1,62 @@
+/* Fade-in */
+.section-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6); /* fondo blanco pálido */
+  backdrop-filter: blur(6px); /* desenfoque del fondo */
+  animation: fadeInOut 3s ease forwards;
+  pointer-events: none;
+}
+
+.section-intro h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  opacity: 0;
+  animation: textAppear 3s ease forwards;
+}
+
+/* keyframes para la animación del contenedor */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+  }
+  
+  /* keyframes para el texto (aparece y se va con leve zoom) */
+  @keyframes textAppear {
+    0% { opacity: 0; transform: scale(0.95); }
+    10% { opacity: 1; transform: scale(1); }
+    90% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.05); }
+  }
+  
+  /* Fade-out */
+
+/* Oculta el contenido inicialmente */
+.hidden {
+  opacity: 0;
+}
+
+/* Fade-in animado */
+.fade-in {
+  opacity: 1;
+  animation: fadeInContent 0.6s ease-out;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
