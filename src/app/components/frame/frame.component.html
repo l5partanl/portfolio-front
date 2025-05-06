@@ -1,0 +1,46 @@
+<div class="app-frame">
+    <!-- HEADER -->
+    <header class="top-bar d-flex justify-content-between align-items-center">
+        <div class="logo fw-semibold">⚡ Gian Caorlin - Full-stack developer | Industrial designer</div>
+        <a href="mailto:caorlingiancarlo@gmail.com" class="contact-btn btn btn-sm">Contact me</a>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="side-menu" [class.open]="menuOpen">
+        <button class="menu-btn" (click)="toggleMenu()">
+            {{ menuOpen ? '✕' : '☰' }}
+        </button>
+
+        <nav>
+            <ul>
+                <li><a routerLink="/projects/fullstack" (click)="toggleMenu()">Full-stack projects</a></li>
+                <li><a routerLink="/projects/design" (click)="toggleMenu()">Industrial Design projects</a></li>
+                <li><a routerLink="/about" (click)="toggleMenu()">About me</a></li>
+                <li><a routerLink="/cv" (click)="toggleMenu()">CV</a></li>
+                <li><a routerLink="/background" (click)="toggleMenu()">Background</a></li>
+            </ul>
+            <div class="social-links mt-4">
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> Github</a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Barra inferior con hamburguesa (solo visible en mobile) -->
+    <div class="mobile-bottom-bar d-md-none">
+        <button (click)="toggleMenu()">
+            {{ menuOpen ? '✕' : '☰' }}
+        </button>
+    </div>
+
+    <!-- OVERLAY con @if -->
+    @if (menuOpen) {
+    <div class="menu-overlay" (click)="toggleMenu()"></div>
+    }
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+
+</div>

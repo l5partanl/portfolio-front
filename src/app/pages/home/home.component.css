@@ -17,8 +17,6 @@
   .mesa {
     position: relative;
     width: 100%;
-    max-width: 1100px;
-    /* Relación real de tu fondo en píxeles (por ejemplo: 1100x1800) */
     aspect-ratio: 1100 / 1800;
     image-rendering: auto;
   }
@@ -28,7 +26,6 @@
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 10px;
   }
   
   /* Objetos con tamaño original (en píxeles), posicionados absolutos */
@@ -85,25 +82,4 @@
     transform: translateY(-18px); /* Aumenta un 50% el tamaño y desplaza hacia arriba */
     filter: brightness(1.15); /* Hace la imagen más brillante */
     cursor: pointer;
-  }
-
-  /* Header */
-  .site-header {
-    margin: 0 auto;
-    max-width: 1100px;
-    transform: translateY(50px);
-  }
-
-  .navbar {
-    background-color: rgba(179, 179, 179, 0.447) !important;
-    backdrop-filter: blur(10px);
-  }
-  
-  .nav-link {
-    color: white !important;
-    transition: 0.2s ease;
-  }
-  
-  .nav-link:hover {
-    color: #d1d1d1 !important;
   }
