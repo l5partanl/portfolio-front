@@ -1,11 +1,13 @@
 import {
 	Component,
 	type ElementRef,
-	ViewChild,
 	type AfterViewInit,
 	type OnDestroy,
+	NgZone,
+	inject,
+	ViewChildren,
+	type QueryList,
 } from "@angular/core";
-import html2canvas from "html2canvas";
 
 @Component({
 	selector: "app-inception-frame",
@@ -14,61 +16,33 @@ import html2canvas from "html2canvas";
 	styleUrl: "./inception-frame.component.css",
 })
 export class InceptionFrameComponent implements AfterViewInit, OnDestroy {
-	@ViewChild("frameCanvas", { static: true })
-	frameCanvas!: ElementRef<HTMLImageElement>;
-	@ViewChild("observerTarget", { static: true })
-	observerTarget!: ElementRef<HTMLDivElement>;
+	@ViewChildren("parallaxLayers") parallaxLayers!: QueryList<
+		ElementRef<HTMLImageElement>
+	>;
+	layerImage = "../../../assets/images/viewport-capture.png"; // imagen con transparencia
+	private scrollHandler!: () => void;
 
-	private intervalId: ReturnType<typeof setInterval> | null = null;
-	private observer!: IntersectionObserver;
+	zone = inject(NgZone);
 
-	ngAfterViewInit(): void {
-		this.observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					this.captureFrame();
-					this.intervalId = setInterval(() => this.captureFrame(), 300);
-				} else {
-					if (this.intervalId) {
-						clearInterval(this.intervalId);
-						this.intervalId = null;
-					}
-				}
-			},
-			{ threshold: 0.5 }, // actívate cuando el 20% del componente esté visible
-		);
+	ngAfterViewInit() {
+		this.zone.runOutsideAngular(() => {
+			this.scrollHandler = () => {
+				const scrollY = window.scrollY;
 
-		this.observer.observe(this.observerTarget.nativeElement);
-	}
+				this.parallaxLayers.forEach((layer, index) => {
+					const factor = 0.1 * (index + 1);
+					const translateY = -scrollY * factor;
+					const scale = 1.2 - 0.2 * (4 - index); // ejemplo: 0.6, 0.7, 0.8, 0.9, 1
 
-	async captureFrame() {
-		await this.preloadImages();
-		const canvas = await html2canvas(document.body, {
-			backgroundColor: null,
-			logging: false,
-			useCORS: true,
-			scale: 0.4,
-			removeContainer: true,
-			ignoreElements: (el) =>
-				el.id === "inception-wrapper" || el.tagName === "APP-INCEPTION-FRAME",
+					layer.nativeElement.style.transform = `translate3d(-50%, ${translateY}px, 0) scale(${scale})`;
+				});
+			};
+
+			window.addEventListener("scroll", this.scrollHandler);
 		});
-
-		const dataUrl = canvas.toDataURL("image/jpeg", 0.5);
-		this.frameCanvas.nativeElement.src = dataUrl;
-	}
-	private preloadImages(): Promise<void> {
-		const images = Array.from(document.images) as HTMLImageElement[];
-		const loading = images.map((img) => {
-			if (img.complete) return Promise.resolve();
-			return new Promise<void>((resolve) => {
-				img.onload = img.onerror = () => resolve();
-			});
-		});
-		return Promise.all(loading).then(() => {});
 	}
 
-	ngOnDestroy(): void {
-		if (this.observer) this.observer.disconnect();
-		if (this.intervalId) clearInterval(this.intervalId);
+	ngOnDestroy() {
+		window.removeEventListener("scroll", this.scrollHandler);
 	}
 }

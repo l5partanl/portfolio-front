@@ -1,28 +1,76 @@
-.inception-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  filter: brightness(0.95) contrast(1.1);
-  pointer-events: none;
-}
-
 .inception-wrapper {
-  width: 100%;
-  height: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
-.inception-img {
+.parallax-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(0.95) contrast(1.1);
-  pointer-events: none;
-  border-radius: 8px;
+  transform-style: preserve-3d;
 }
+
+.parallax-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+
+.layer-0 {
+  margin-top: -20px;
+  z-index: 1;
+  filter: blur(5px);
+  left: 50%;
+  width: 42%;
+  transform: translate3d(-50%, 0, 0);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
+.layer-1 {
+  z-index: 2;
+  filter: blur(4px);
+  left: 50%;
+  width: 51%;
+  transform: translate3d(-50%, 0, 0);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
+.layer-2 {
+  z-index: 3;
+  filter: blur(2.5px);
+  left: 50%;
+  width: 65%;
+  transform: translate3d(-50%, 0, 0);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
+.layer-3 {
+  z-index: 4;
+  filter: blur(1px);
+  left: 50%;
+  width: 80%;
+  transform: translate3d(-50%, 0, 0);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
+.layer-4 {
+  z-index: 5;
+  filter: none;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
 
 .live-indicator {
   position: absolute;

@@ -1,7 +1,12 @@
-<div #observerTarget class="inception-wrapper position-relative">
+<div class="inception-wrapper">
     <div class="live-indicator">
         <span class="dot"></span>
         LIVE
     </div>
-    <img #frameCanvas class="inception-img" alt="Live viewport" />
+
+    <div class="parallax-container">
+        @for (i of [0, 1, 2, 3, 4]; track i) {
+        <img #parallaxLayers class="parallax-image layer-{{ i }}" [src]="layerImage" alt="Viewport Layer {{ i + 1 }}" />
+        }
+    </div>
 </div>
