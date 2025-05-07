@@ -12,6 +12,7 @@ import type { Project } from "../../interfaces/project.interface";
 })
 export class AboutComponent implements OnInit {
 	projectService = inject(ProjectService);
+	showMainContent = false;
 
 	about: Project = {
 		title: "",
@@ -22,6 +23,9 @@ export class AboutComponent implements OnInit {
 	};
 
 	async ngOnInit(): Promise<void> {
+		setTimeout(() => {
+			this.showMainContent = true;
+		}, 1200);
 		try {
 			const projects = await this.projectService.getProjectsByType("about");
 			this.about = projects[0]; // Solo usamos el primer elemento

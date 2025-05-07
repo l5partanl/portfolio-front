@@ -1,27 +1,41 @@
-<section class="about-container">
-    <div class="about-card">
-        <div class="about-image">
-            <img [src]="about.imageUrl" alt="Gian Caorlin" />
-        </div>
+<!-- fade in -->
+@if (!showMainContent) {
+<div class="section-intro">
+    <h1>About me</h1>
+</div>
+}
+<!-- fade out -->
 
-        <div class="about-details">
-            <h1 class="about-title">{{ about.title }}</h1>
-            <p class="about-description">{{ about.description }}</p>
+<section class="{{ showMainContent ? 'fade-in' : 'hidden' }} about-bio ">
 
-            <div class="about-tags">
-                @for (tag of about.tags; track tag) {
-                <span class="tag">{{ tag }}</span>
-                }
-            </div>
-
-            <div class="about-links">
-                @if (about.liveLink) {
-                <a [href]="about.liveLink" target="_blank" class="btn-pill">LinkedIn</a>
-                }
-                @if (about.github) {
-                <a [href]="about.github" target="_blank" class="btn-pill">GitHub</a>
-                }
-            </div>
-        </div>
+    <div class="about-col photo">
+        <img [src]="about.imageUrl" alt="Gian Caorlin" />
     </div>
+
+    <div class="about-col text">
+        <h1>
+            <span class="hello">Hello, I’m</span><br />
+            <span class="highlighted-name">Gian Caorlin</span>.
+        </h1>
+        <h2>Full-stack Developer & Industrial Designer</h2>
+        <p>
+            I design and build tools that bridge the gap between physical and digital systems.
+            My work blends <strong>curiosity</strong>, <strong>precision</strong>, and <strong>resilience</strong>
+            across engineering, UX and 3D design.
+        </p>
+
+        <p>
+            On the side, I enjoy exploring generative art, sketching and creative coding.
+            You can find more on my <a href="/projects/graphic">design</a> or <a href="/projects/art">art</a>
+            sections.
+        </p>
+
+        <ul class="social">
+            <li><a href="mailto:caorlingiancarlo@gmail.com" class="btn-pill">Email</a></li>
+            <li><a href="https://github.com" class="btn-pill">GitHub</a></li>
+            <li><a href="https://linkedin.com" class="btn-pill">LinkedIn</a></li>
+            <li><a href="https://instagram.com/gian.caorlin" class="btn-pill">Instagram</a></li>
+        </ul>
+    </div>
+
 </section>
