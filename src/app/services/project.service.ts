@@ -12,15 +12,9 @@ export class ProjectService {
 
 	project: Project | null = null;
 
-	getFullstackProjects(): Promise<Project[]> {
+	getProjectsByType(type: string): Promise<Project[]> {
 		return lastValueFrom(
-			this.httpClient.get<Project[]>(`${this.baseUrl}/fullstack`),
-		);
-	}
-
-	getDesignProjects(): Promise<Project[]> {
-		return lastValueFrom(
-			this.httpClient.get<Project[]>(`${this.baseUrl}/design`),
+			this.httpClient.get<Project[]>(`${this.baseUrl}/${type}`),
 		);
 	}
 }

@@ -274,7 +274,7 @@ body {
 
 .animate-entry {
   animation: bounceIn 0.6s ease-out;
-  animation-delay: 5s;
+  animation-delay: 3s;
   animation-fill-mode: both; /* mantiene el estado final después del delay */
 }
 
@@ -282,7 +282,7 @@ body {
 /* Estilo base + hover mejorado */
 .btn-floating-home {
   position: fixed;
-  bottom: 2rem;
+  bottom: 4rem;
   right: 2rem;
   z-index: 1000;
   padding: 0.5rem 1.4rem;

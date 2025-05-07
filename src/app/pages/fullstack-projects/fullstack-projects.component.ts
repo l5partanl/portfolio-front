@@ -20,7 +20,7 @@ export class FullstackProjectsComponent implements OnInit {
 			this.showMainContent = true;
 		}, 1200);
 		try {
-			const data = await this.projectService.getFullstackProjects();
+			const data = await this.projectService.getProjectsByType("fullstack");
 			this.projects = data;
 		} catch (error) {
 			console.error("Error loading fullstack projects:", error);

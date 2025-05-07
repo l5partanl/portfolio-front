@@ -19,7 +19,7 @@ export class DesignProjectsComponent implements OnInit {
 			this.showMainContent = true;
 		}, 1200);
 		try {
-			const data = await this.projectService.getDesignProjects();
+			const data = await this.projectService.getProjectsByType("design");
 			this.projects = data;
 		} catch (error) {
 			console.error("Error loading design projects:", error);
