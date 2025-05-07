@@ -5,5 +5,5 @@ export interface Project {
 	imageUrl: string;
 	liveLink?: string;
 	github?: string;
-	type: "fullstack" | "design" | "about" | "art" | "Graphic";
+	type: "fullstack" | "design" | "about" | "art" | "graphic";
 }

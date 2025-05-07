@@ -1,12 +1,19 @@
 import { Component } from "@angular/core";
+import { ShowcaseCardComponent } from "../../components/showcase-card/showcase-card.component";
 
 @Component({
 	selector: "app-home",
-	imports: [],
+	imports: [ShowcaseCardComponent],
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 })
 export class HomeComponent {
+	showGraphicCard = false;
+
+	toggleGraphicCard(): void {
+		this.showGraphicCard = !this.showGraphicCard;
+	}
+
 	ngAfterViewInit(): void {
 		const wrappers = document.querySelectorAll(".preview-wrapper");
 

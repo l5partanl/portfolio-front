@@ -29,13 +29,13 @@
         </div>
 
         <!-- Libro -->
-        <div class="preview-wrapper libro">
+        <div class="preview-wrapper libro" (click)="toggleGraphicCard()">
             <img src="assets/images/libro.png" class="obj" alt="Libro">
             <div class="preview-box" data-text="📖 Background & interests"></div>
         </div>
 
         <!-- Cuaderno -->
-        <div class="preview-wrapper cuaderno">
+        <div class="preview-wrapper cuaderno" (click)="toggleGraphicCard()">
             <img src="assets/images/cuaderno.png" class="obj" alt="Cuaderno">
             <div class="preview-box" data-text="📝 CV & experience"></div>
         </div>
@@ -57,5 +57,14 @@
         </div>
 
 
+        @if (showGraphicCard) {
+        <app-showcase-card [type]="'graphic'" (close)="toggleGraphicCard()">
+        </app-showcase-card>
+        }
+
+        <!--         @if (showArtCard) {
+        <app-showcase-card [type]="'art'" (close)="toggleArtCard()">
+        </app-showcase-card>
+        } -->
     </div>
 </section>
