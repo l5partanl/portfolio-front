@@ -35,7 +35,49 @@
     /* No definimos width, se usa el tamaño real del PNG */
     transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   }
+
+  .preview-wrapper {
+    position: absolute;
+    display: inline-block;
+    pointer-events: auto;
+  }
   
+  
+  .preview-wrapper .obj {
+    width: 100%;
+  }
+  
+  /* Tooltip */
+  .preview-box {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(0.8) translate(-50%, -100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+  }
+  
+  .preview-box.visible {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -100%);
+  }
+  
+  .preview-box.typing::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+    
   .movil {
     top: 78%;
     left: 28%;
@@ -81,5 +123,7 @@
   .obj:hover {
     transform: translateY(-18px); /* Aumenta un 50% el tamaño y desplaza hacia arriba */
     filter: brightness(1.15); /* Hace la imagen más brillante */
-    cursor: pointer;
+    cursor: pointer
   }
+
+  

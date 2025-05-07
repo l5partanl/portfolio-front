@@ -1,16 +1,9 @@
 body {
   margin: 0;
   background-color: #f9f7f1;
-  background-image: url('https://www.transparenttextures.com/patterns/cardboard-flat.png');
   background-repeat: repeat;
-  animation: textureShift 20s linear infinite;
   background-position: 0 0;
   font-family: sans-serif;
-}
-
-@keyframes textureShift {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
 }
 
 .app-frame {
@@ -42,20 +35,27 @@ body {
   position: relative;
 }
 
-.contact-btn {
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  border-radius: 25px;
-  padding: 0.4rem 1.2rem;
-  box-shadow: 0 4px 12px var(--shadow-light);
+.btn-pill {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--pill-color-start), var(--pill-color-end));
+  background-blend-mode: overlay;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
   transition: all 0.3s ease;
+  border: 1px solid var(--secondary-color);
 }
 
-.contact-btn:hover {
-  background-color: var(--primary-hover);
+.btn-pill:hover {
+  background-color: var(--pill-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px var(--shadow-medium);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--primary-color);
 }
+
 
 /* SIDEBAR */
 .side-menu {
@@ -99,6 +99,7 @@ body {
 
 .side-menu li {
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .side-menu a {
@@ -254,4 +255,53 @@ body {
     color: var(--primary-color);
     cursor: pointer;
   }
+}
+
+/* Animación de entrada */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-entry {
+  animation: bounceIn 0.6s ease-out;
+  animation-delay: 5s;
+  animation-fill-mode: both; /* mantiene el estado final después del delay */
+}
+
+
+/* Estilo base + hover mejorado */
+.btn-floating-home {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary-color);
+  background:
+    linear-gradient(var(--primary-bg), var(--primary-bg)) padding-box,
+    linear-gradient(135deg, var(--pill-color-start), var(--pill-color-end)) border-box;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+
+/* Hover animado */
+.btn-floating-home:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
