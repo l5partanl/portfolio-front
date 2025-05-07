@@ -8,8 +8,6 @@
                 } @else {
                 <img class="project-image" [src]="project.imageUrl" alt="{{ project.title }}" />
                 }
-
-                <img class="frame-overlay" [src]="getFrameUrl(index)" alt="Device frame" />
             </div>
         </div>
 
@@ -29,14 +27,15 @@
                 </div>
             </div>
 
-            <div class="links d-flex gap-4 mt-3">
+            <div class="links d-flex gap-3 mt-3">
                 @if (project.liveLink) {
-                <a [href]="project.liveLink" target="_blank" class="text-decoration-underline">Live project</a>
+                <a [href]="project.liveLink" target="_blank" class="btn-pill">Live project</a>
                 }
                 @if (project.github) {
-                <a [href]="project.github" target="_blank" class="text-decoration-underline">GitHub readme</a>
+                <a [href]="project.github" target="_blank" class="btn-pill">GitHub readme</a>
                 }
             </div>
+
         </div>
     </div>
 </div>

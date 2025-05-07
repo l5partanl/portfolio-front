@@ -1,23 +1,39 @@
 .device-frame {
   position: relative;
-  width: 100%;
   padding-top: 56.25%; /* 16:9 */
   overflow: hidden;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 1;
+  border: 1px solid var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
 }
 
+/* Sombra desaparece suavemente al soltar */
+.device-frame.released {
+  box-shadow: none;
+}
+
+/* Simula perspectiva desde el contenedor */
+.project-card .col-md-5 {
+  perspective: 1000px;
+}
+
+/* Imagen o frame de app */
 .device-frame .project-image,
 .device-frame app-inception-frame {
   position: absolute;
-  top:8.2%;
-  left: 2%;
-  width: 96%;
-  height: 83%;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20px;
   z-index: 1;
   display: block;
 }
 
+/* Overlay (frame de dispositivo) */
 .device-frame .frame-overlay {
   position: absolute;
   top: 0;
@@ -29,7 +45,7 @@
   z-index: 2;
 }
 
-/* Rotación solo en mockups verticales */
+/* Rotación específica para mockups verticales */
 .device-frame.mobile .frame-overlay,
 .device-frame.mobile1 .frame-overlay,
 .device-frame.mobile2 .frame-overlay {
@@ -37,6 +53,7 @@
   transform-origin: center;
 }
 
+/* Layout general del card */
 .project-card .row {
   display: flex;
   flex-wrap: wrap;
@@ -45,4 +62,25 @@
 
 .project-card.reverse .row {
   flex-direction: row-reverse;
+}
+
+.btn-pill {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--pill-color-start), var(--pill-color-end));
+  background-blend-mode: overlay;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid var(--secondary-color);
+}
+
+.btn-pill:hover {
+  background-color: var(--pill-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--primary-color);
 }

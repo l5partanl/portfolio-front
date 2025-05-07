@@ -13,11 +13,12 @@ export class FullstackProjectsComponent implements OnInit {
 	projects: Project[] = [];
 	projectService = inject(ProjectService);
 	showMainContent = false;
+	visibleProjects: Set<string> = new Set();
 
 	async ngOnInit(): Promise<void> {
 		setTimeout(() => {
 			this.showMainContent = true;
-		}, 3000);
+		}, 1200);
 		try {
 			const data = await this.projectService.getFullstackProjects();
 			this.projects = data;

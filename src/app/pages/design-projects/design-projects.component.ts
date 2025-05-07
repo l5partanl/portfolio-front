@@ -17,7 +17,7 @@ export class DesignProjectsComponent implements OnInit {
 	async ngOnInit(): Promise<void> {
 		setTimeout(() => {
 			this.showMainContent = true;
-		}, 3000);
+		}, 1200);
 		try {
 			const data = await this.projectService.getDesignProjects();
 			this.projects = data;

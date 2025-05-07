@@ -11,6 +11,10 @@
     --shadow-medium: rgba(0, 0, 0, 0.2);
     --tag-bg: #d8d2c4;
     --text-dark: #333;
+
+    --pill-color-start: #cffff2;
+    --pill-color-end: #f9ddb8;
+    --pill-hover: #f8c38d;
   }
 
   body {

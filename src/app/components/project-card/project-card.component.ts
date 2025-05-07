@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, ElementRef, inject, Input } from "@angular/core";
 import { InceptionFrameComponent } from "../inception-frame/inception-frame.component";
 
 export interface Project {
@@ -20,6 +20,48 @@ export interface Project {
 export class ProjectCardComponent {
 	@Input() project!: Project;
 	@Input() index!: number;
+
+	private el = inject(ElementRef);
+
+	ngAfterViewInit(): void {
+		const frame = this.el.nativeElement.querySelector(".device-frame");
+		if (!frame) return;
+
+		const applyTransform = (x: number, y: number) => {
+			const rect = frame.getBoundingClientRect();
+			const centerX = rect.width / 2;
+			const centerY = rect.height / 2;
+
+			const rotateX = -(y - rect.top - centerY) / 20;
+			const rotateY = (x - rect.left - centerX) / 20;
+
+			frame.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.06)`;
+			frame.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 30px rgba(0,0,0,0.4)`;
+		};
+
+		const reset = () => {
+			frame.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+			frame.style.boxShadow = "";
+			frame.classList.add("released");
+
+			setTimeout(() => {
+				frame.classList.remove("released");
+			}, 400);
+		};
+
+		// Desktop
+		frame.addEventListener("mousemove", (e: MouseEvent) => {
+			applyTransform(e.clientX, e.clientY);
+		});
+		frame.addEventListener("mouseleave", reset);
+
+		// Mobile
+		frame.addEventListener("touchmove", (e: TouchEvent) => {
+			const touch = e.touches[0];
+			applyTransform(touch.clientX, touch.clientY);
+		});
+		frame.addEventListener("touchend", reset);
+	}
 
 	getFrameType(i: number): "mobile" | "mobile1" | "mobile2" {
 		const types = ["mobile", "mobile1", "mobile2"];

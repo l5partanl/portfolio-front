@@ -31,10 +31,10 @@
   
   /* keyframes para el texto (aparece y se va con leve zoom) */
   @keyframes textAppear {
-    0% { opacity: 0; transform: scale(0.95); }
-    10% { opacity: 1; transform: scale(1); }
-    90% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(1.05); }
+    0% { opacity: 0; transform: scale(0.75); }
+    50% { opacity: 1; transform: scale(1); }
+    80% { opacity: 1; transform: scale(1.15); }
+    100% { opacity: 0; transform: scale(1.25); }
   }
   
   /* Fade-out */
@@ -53,7 +53,7 @@
 @keyframes fadeInContent {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
