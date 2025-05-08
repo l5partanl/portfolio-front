@@ -17,6 +17,13 @@ import { RouterOutlet, Router } from "@angular/router";
 export class FrameComponent implements AfterViewInit {
 	menuOpen = false;
 	router = inject(Router);
+	isIntroVisible = true;
+
+	ngOnInit(): void {
+		setTimeout(() => {
+			this.isIntroVisible = false;
+		}, 2500); // cambia el tiempo a tu gusto
+	}
 
 	@ViewChild("homeBtn", { static: true })
 	homeBtn!: ElementRef<HTMLAnchorElement>;

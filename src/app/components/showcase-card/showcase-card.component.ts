@@ -45,7 +45,7 @@ export class ShowcaseCardComponent implements OnInit, OnDestroy {
 	startCarousel(): void {
 		this.intervalId = setInterval(() => {
 			this.currentIndex = (this.currentIndex + 1) % this.projects.length;
-		}, 4000);
+		}, 3000);
 	}
 
 	handleClose(): void {

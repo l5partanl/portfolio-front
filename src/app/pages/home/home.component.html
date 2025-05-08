@@ -8,7 +8,7 @@
             <a href="https://www.instagram.com/gian.caorlin/" target="_blank" rel="noopener noreferrer">
                 <img src="assets/images/movil.png" class="obj movil" alt="Móvil" />
             </a>
-            <div class="preview-box" data-text="🎨 Bits of my creative side"></div>
+            <div class="preview-box" data-text="📱 Bits of my creative side"></div>
         </div>
 
 
@@ -17,7 +17,7 @@
             <a href="assets/CV-Gian-Caorlin.pdf" download="CV-GianCaorlin.pdf">
                 <img src="assets/images/curriculum.png" class="obj" alt="Currículum" />
             </a>
-            <div class="preview-box" data-text="⬇ Download CV (PDF)"></div>
+            <div class="preview-box" data-text="📝 Download CV (PDF)⬇"></div>
         </div>
 
         <!-- Foto -->
@@ -35,9 +35,9 @@
         </div>
 
         <!-- Cuaderno -->
-        <div class="preview-wrapper cuaderno" (click)="toggleGraphicCard()">
+        <div class="preview-wrapper cuaderno" (click)="toggleArtCard()">
             <img src="assets/images/cuaderno.png" class="obj" alt="Cuaderno">
-            <div class="preview-box" data-text="📝 CV & experience"></div>
+            <div class="preview-box" data-text="🎨 Artistic Exploration"></div>
         </div>
 
         <!-- Full-stack -->
@@ -53,7 +53,7 @@
             <a href="/projects/design">
                 <img src="assets/images/flotador.png" class="obj" alt="Industrial Design">
             </a>
-            <div class="preview-box" data-text="🎨 Industrial Design projects"></div>
+            <div class="preview-box" data-text="💡 Industrial Design projects"></div>
         </div>
 
 
@@ -62,9 +62,9 @@
         </app-showcase-card>
         }
 
-        <!--         @if (showArtCard) {
+        @if (showArtCard) {
         <app-showcase-card [type]="'art'" (close)="toggleArtCard()">
         </app-showcase-card>
-        } -->
+        }
     </div>
 </section>

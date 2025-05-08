@@ -9,9 +9,14 @@ import { ShowcaseCardComponent } from "../../components/showcase-card/showcase-c
 })
 export class HomeComponent {
 	showGraphicCard = false;
+	showArtCard = false;
 
 	toggleGraphicCard(): void {
 		this.showGraphicCard = !this.showGraphicCard;
+	}
+
+	toggleArtCard(): void {
+		this.showArtCard = !this.showArtCard;
 	}
 
 	ngAfterViewInit(): void {

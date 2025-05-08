@@ -4,14 +4,24 @@
     <button class="close-btn" (click)="handleClose()">✕</button>
 
     <div class="intro-text">
+        @if (type === 'graphic') {
         <h2>📖 Graphic & Multimedia Design</h2>
         <p>
-            Over the years, I’ve worked as a freelance designer creating <strong>book covers</strong>, <strong>album
-                art</strong>, <strong>video games</strong>,
-            <strong>concept art for video clips</strong>, and other visual narratives. Here’s a glimpse of some selected
-            pieces.
+            Over the years, I’ve worked as a freelance designer creating
+            <strong>book covers</strong>, <strong>album art</strong>, <strong>video games</strong>,
+            <strong>concept art for video clips</strong>, and other visual narratives.
+            Here’s a glimpse of some selected pieces.
         </p>
+        } @else if (type === 'art') {
+        <h2>🎨 Artistic Exploration</h2>
+        <p>
+            This is a selection of my personal <strong>artwork</strong>, <strong>illustration</strong>,
+            <strong>sketching</strong>, <strong>experimentation</strong> and <strong>visual narratives</strong>
+            created outside of professional commissions.
+        </p>
+        }
     </div>
+
 
     @if (projects.length > 0) {
     <div class="carousel-wrapper">
@@ -21,7 +31,9 @@
             @for (item of projects; track item._id) {
             <div class="project-tile" (click)="openFullscreen(item)">
                 <h3>{{ item.title }}</h3>
-                <img [src]="item.imageUrl" alt="{{ item.title }}" />
+                <figure>
+                    <img [src]="item.imageUrl" alt="{{ item.title }}" />
+                </figure>
                 <div class="info">
                     <p>{{ item.description }}</p>
                 </div>
@@ -39,7 +51,6 @@
             <button class="close-fullscreen" (click)="closeFullscreen()">✕</button>
             <img [src]="selectedItem.imageUrl" alt="{{ selectedItem.title }}" />
             <div class="caption">
-                <h3>{{ selectedItem.title }}</h3>
                 <p>{{ selectedItem.description }}</p>
             </div>
         </div>
