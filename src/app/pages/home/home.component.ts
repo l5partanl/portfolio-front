@@ -1,15 +1,23 @@
 import { Component } from "@angular/core";
 import { ShowcaseCardComponent } from "../../components/showcase-card/showcase-card.component";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
 	selector: "app-home",
-	imports: [ShowcaseCardComponent],
+	imports: [ShowcaseCardComponent, RouterOutlet],
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 })
 export class HomeComponent {
 	showGraphicCard = false;
 	showArtCard = false;
+	isIntroVisible = true;
+
+	ngOnInit(): void {
+		setTimeout(() => {
+			this.isIntroVisible = false;
+		}, 2500); // cambia el tiempo a tu gusto
+	}
 
 	toggleGraphicCard(): void {
 		this.showGraphicCard = !this.showGraphicCard;
