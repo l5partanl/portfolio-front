@@ -1,7 +1,10 @@
 <div class="app-frame">
     <!-- HEADER -->
     <header class="top-bar d-flex justify-content-between align-items-center">
-        <div class="logo fw-semibold">⚡ Gian Caorlin - Full-stack developer | Industrial designer</div>
+        <div class="logo fw-semibold">
+            <span class="name">⚡ Gian Caorlin</span><br />
+            <span class="title">Full-stack developer | Industrial designer</span>
+        </div>
         <a href="mailto:caorlingiancarlo@gmail.com" class="btn-pill btn-pill--cta">Contact me</a>
     </header>
 
@@ -14,11 +17,11 @@
         <nav>
             <ul>
                 <li><a (click)="navigateTo('/')">Home</a></li>
-                <li><a (click)="navigateTo('/projects/fullstack')">Full-stack projects</a></li>
-                <li><a (click)="navigateTo('/projects/design')">Industrial Design projects</a></li>
-                <li><a (click)="navigateTo('/about')">About me</a></li>
-                <li><a href="../../../assets/CV-Gian-Caorlin.pdf" download="CV-GianCaorlin.pdf">CV</a></li>
-                <li><a routerLink="/background" (click)="toggleMenu()">Background</a></li>
+                <li><a (click)="navigateTo('/projects/fullstack')">💻 Full-stack projects</a></li>
+                <li><a (click)="navigateTo('/projects/design')">💡 ID projects</a></li>
+                <li><a (click)="navigateTo('/about')">👤 About me</a></li>
+                <li><a href="../../../assets/CV-Gian-Caorlin.pdf" download="CV-GianCaorlin.pdf">📝 CV ⬇</a>
+                </li>
             </ul>
             <div class="social-links mt-4">
                 <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>

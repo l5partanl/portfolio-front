@@ -20,44 +20,13 @@
 <section class="main">
     <div class="mesa">
 
+        @if (showScrollHint){
+        <div class="scroll-hint">
+            Scroll down & explore <span class="arrow">↓</span>
+        </div>
+        }
+
         <img src="assets/images/fondo.png" class="fondo" alt="Mesa">
-
-        <!-- Móvil -->
-        <div class="preview-wrapper movil">
-            <a href="https://www.instagram.com/gian.caorlin/" target="_blank" rel="noopener noreferrer">
-                <img src="assets/images/movil.png" class="obj movil" alt="Móvil" />
-            </a>
-            <div class="preview-box" data-text="📱 Bits of my creative side"></div>
-        </div>
-
-
-        <!-- CV -->
-        <div class="preview-wrapper curriculum">
-            <a href="assets/CV-Gian-Caorlin.pdf" download="CV-GianCaorlin.pdf">
-                <img src="assets/images/curriculum.png" class="obj" alt="Currículum" />
-            </a>
-            <div class="preview-box" data-text="📝 Download CV (PDF)⬇"></div>
-        </div>
-
-        <!-- Foto -->
-        <div class="preview-wrapper foto">
-            <a href="/about">
-                <img src="assets/images/foto.png" class="obj" alt="Foto">
-            </a>
-            <div class="preview-box" data-text="👤 About me"></div>
-        </div>
-
-        <!-- Libro -->
-        <div class="preview-wrapper libro" (click)="toggleGraphicCard()">
-            <img src="assets/images/libro.png" class="obj" alt="Libro">
-            <div class="preview-box" data-text="📖 Graphic & Multimedia Design"></div>
-        </div>
-
-        <!-- Cuaderno -->
-        <div class="preview-wrapper cuaderno" (click)="toggleArtCard()">
-            <img src="assets/images/cuaderno.png" class="obj" alt="Cuaderno">
-            <div class="preview-box" data-text="🎨 Artistic Exploration"></div>
-        </div>
 
         <!-- Full-stack -->
         <div class="preview-wrapper pc">
@@ -75,6 +44,41 @@
             <div class="preview-box" data-text="💡 Industrial Design projects"></div>
         </div>
 
+        <!-- Foto -->
+        <div class="preview-wrapper foto">
+            <a href="/about">
+                <img src="assets/images/foto.png" class="obj" alt="Foto">
+            </a>
+            <div class="preview-box" data-text="👤 About me"></div>
+        </div>
+
+        <!-- CV -->
+        <div class="preview-wrapper curriculum">
+            <a href="assets/CV-Gian-Caorlin.pdf" download="CV-GianCaorlin.pdf">
+                <img src="assets/images/curriculum.png" class="obj" alt="Currículum" />
+            </a>
+            <div class="preview-box" data-text="📝 Download CV (PDF)⬇"></div>
+        </div>
+
+        <!-- Libro -->
+        <div class="preview-wrapper libro" (click)="toggleGraphicCard()">
+            <img src="assets/images/libro.png" class="obj" alt="Libro">
+            <div class="preview-box" data-text="📖 Graphic & Multimedia Design"></div>
+        </div>
+
+        <!-- Cuaderno -->
+        <div class="preview-wrapper cuaderno" (click)="toggleArtCard()">
+            <img src="assets/images/cuaderno.png" class="obj" alt="Cuaderno">
+            <div class="preview-box" data-text="🎨 Artistic Exploration"></div>
+        </div>
+
+        <!-- Móvil -->
+        <div class="preview-wrapper movil">
+            <a href="https://www.instagram.com/gian.caorlin/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/movil.png" class="obj movil" alt="Móvil" />
+            </a>
+            <div class="preview-box" data-text="📱 Bits of my creative side"></div>
+        </div>
 
         @if (showGraphicCard) {
         <app-showcase-card [type]="'graphic'" (close)="toggleGraphicCard()">

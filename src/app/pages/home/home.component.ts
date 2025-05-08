@@ -1,17 +1,26 @@
-import { Component } from "@angular/core";
+import {
+	Component,
+	type ElementRef,
+	ViewChild,
+	type AfterViewInit,
+} from "@angular/core";
 import { ShowcaseCardComponent } from "../../components/showcase-card/showcase-card.component";
 import { RouterOutlet } from "@angular/router";
 
 @Component({
 	selector: "app-home",
+	standalone: true,
 	imports: [ShowcaseCardComponent, RouterOutlet],
 	templateUrl: "./home.component.html",
 	styleUrl: "./home.component.css",
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
+	@ViewChild("elementRef") elementRef!: ElementRef;
+
 	showGraphicCard = false;
 	showArtCard = false;
 	isIntroVisible = false;
+	showScrollHint = true;
 
 	ngOnInit(): void {
 		const alreadyVisited = sessionStorage.getItem("homeIntroShown");
@@ -22,7 +31,30 @@ export class HomeComponent {
 			setTimeout(() => {
 				this.isIntroVisible = false;
 				sessionStorage.setItem("homeIntroShown", "true");
-			}, 5500); // o el tiempo que uses
+			}, 5500);
+		}
+	}
+
+	ngAfterViewInit(): void {
+		const scrollContainer = document.querySelector(".main-content");
+
+		setTimeout(() => {
+			const hint = document.querySelector(".scroll-hint") as HTMLElement;
+			if (hint && this.showScrollHint) {
+				hint.classList.add("visible");
+			}
+		}, 8000);
+
+		if (scrollContainer) {
+			scrollContainer.addEventListener("scroll", this.handleScrollOnce, {
+				passive: true,
+				once: true,
+			});
+		}
+
+		// Tooltips solo en desktop
+		if (window.innerWidth > 768) {
+			this.setupTooltips();
 		}
 	}
 
@@ -34,7 +66,21 @@ export class HomeComponent {
 		this.showArtCard = !this.showArtCard;
 	}
 
-	ngAfterViewInit(): void {
+	handleScrollOnce = () => {
+		const scrollHintEl = document.querySelector(".scroll-hint") as HTMLElement;
+
+		if (scrollHintEl) {
+			scrollHintEl.classList.add("fade-out");
+			setTimeout(() => {
+				this.showScrollHint = false;
+			}, 2000); // debe coincidir con la transición CSS
+		}
+
+		const scrollContainer = document.querySelector(".main-content");
+		scrollContainer?.removeEventListener("scroll", this.handleScrollOnce);
+	};
+
+	setupTooltips(): void {
 		const wrappers = document.querySelectorAll(".preview-wrapper");
 
 		for (const wrapper of wrappers) {
@@ -68,7 +114,7 @@ export class HomeComponent {
 
 						hasTyped = true;
 					}
-				}, 250); // delay para mostrar
+				}, 250);
 			});
 
 			wrapper.addEventListener("mousemove", (e) => {

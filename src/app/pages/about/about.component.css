@@ -171,3 +171,65 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid var(--primary-color);
 }
+
+@media (max-width: 576px) {
+  .about-bio {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .about-col.photo img {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .about-col.text {
+    width: 100%;
+    text-align: left;
+  }
+
+  .about-col.text h1 {
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .about-col.text .hello {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .about-col.text h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-col.text p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .about-col.text ul.social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding: 0;
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .section-intro h1 {
+    font-size: 2rem;
+  }
+
+  .section-intro .hello {
+    font-size: 1.2rem;
+  }
+
+  .btn-pill {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+  }
+  
+}

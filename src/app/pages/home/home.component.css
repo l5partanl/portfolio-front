@@ -190,7 +190,7 @@
   .mesa {
     position: relative;
     width: 100%;
-    aspect-ratio: 1100 / 1800;
+    aspect-ratio: 1100 / 1760;
     image-rendering: auto;
   }
   
@@ -220,6 +220,69 @@
     width: 100%;
   }
   
+  /* Scroll Hint */
+  .scroll-hint {
+    position: fixed;
+    top: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    pointer-events: none;
+    white-space: nowrap;
+    max-width: 90vw;
+    opacity: 1;
+    transition: opacity 2s ease;
+    white-space: nowrap;
+    max-width: 90vw;
+  }
+  
+  .scroll-hint .arrow {
+    animation: bounce 1.5s infinite ease-in-out;
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+
+  .scroll-hint {
+    opacity: 0;
+    transition: opacity 1.8s ease;
+  }
+  
+  .scroll-hint.visible {
+    opacity: 1;
+  }
+  
+  
+  .scroll-hint.fade-out {
+    opacity: 0;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+  
+  @keyframes fadeInHint {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  
+
   /* Tooltip */
   .preview-box {
     position: absolute;
@@ -250,37 +313,7 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
-    
-  .movil {
-    top: 78%;
-    left: 20%;
-    width: 26%;
-  }
-  
-  .cuaderno {
-    top: 58%;
-    left: 11%;
-    width: 51%;
-  }
-  
-  .curriculum {
-    top: 21%;
-    left: 63%;
-    width: 37%;
-  }
-  
-  .foto {
-    top: 5%;
-    left: 46%;
-    width: 27%;
-  }
-  
-  .libro {
-    top: 58%;
-    left: 53%;
-    width: 33%;
-  }
-  
+
   .pc {
     top: 0.1%;
     left: 0%;
@@ -291,6 +324,36 @@
     top: 28%;
     left: 6%;
     width: 47%; 
+  }
+  
+  .foto {
+    top: 5%;
+    left: 46%;
+    width: 27%;
+  }
+  
+  .curriculum {
+    top: 21%;
+    left: 63%;
+    width: 37%;
+  }
+  
+  .libro {
+    top: 58%;
+    left: 53%;
+    width: 33%;
+  }
+  
+  .cuaderno {
+    top: 58%;
+    left: 11%;
+    width: 51%;
+  }
+  
+  .movil {
+   top: 78%;
+   left: 20%;
+   width: 26%;
   }
   
   .obj:hover {
@@ -305,5 +368,66 @@
     background: rgba(0, 0, 0, 0.4);
     z-index: 999;
     backdrop-filter: blur(3px);
+  }
+
+  @media (max-width: 768px) {
+    .mesa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: url('../../../assets/images/fondo.png') no-repeat left center;
+      background-size: cover;
+      min-height: 100vh;
+      padding: 2rem 0;
+      aspect-ratio: unset;
+    }
+  
+    .fondo {
+      display: none;
+    }
+  
+    .preview-wrapper {
+      all: unset;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100vw;
+      margin: 2rem auto;
+      position: relative;
+      pointer-events: auto;
+    }
+  
+    .preview-wrapper img {
+      width: 100%;
+      height: auto;
+      position: static;
+      padding-top: 50px;
+    }
+    
+    .preview-box {
+      position: absolute;
+      right: -115px;
+      top: 45%;
+      opacity: 1;
+      pointer-events: auto;
+
+    }
+    
+    /* Mostrar data-text con mismo estilo que antes */
+    .preview-box::before {
+      content: attr(data-text);
+      display: block;
+      color: white;
+      padding: 0.5rem 0.9rem;
+      white-space: nowrap;
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    .obj:hover {
+      transform: none;
+      filter: none;
+      cursor: default;
+    }
   }
   
