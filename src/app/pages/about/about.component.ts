@@ -15,6 +15,7 @@ export class AboutComponent implements OnInit {
 	showMainContent = false;
 
 	about: Project = {
+		_id: "",
 		title: "",
 		description: "",
 		tags: [],
