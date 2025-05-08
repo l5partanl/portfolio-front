@@ -67,6 +67,7 @@
   max-width: 960px;
   margin: 4rem auto;
   padding: 2rem;
+  margin-bottom: 140px;
   align-items: center;
   flex-wrap: wrap;
 }

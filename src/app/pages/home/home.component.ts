@@ -11,12 +11,19 @@ import { RouterOutlet } from "@angular/router";
 export class HomeComponent {
 	showGraphicCard = false;
 	showArtCard = false;
-	isIntroVisible = true;
+	isIntroVisible = false;
 
 	ngOnInit(): void {
-		setTimeout(() => {
-			this.isIntroVisible = false;
-		}, 2500); // cambia el tiempo a tu gusto
+		const alreadyVisited = sessionStorage.getItem("homeIntroShown");
+
+		if (!alreadyVisited) {
+			this.isIntroVisible = true;
+
+			setTimeout(() => {
+				this.isIntroVisible = false;
+				sessionStorage.setItem("homeIntroShown", "true");
+			}, 5500); // o el tiempo que uses
+		}
 	}
 
 	toggleGraphicCard(): void {

@@ -6,11 +6,12 @@ import {
 	type ElementRef,
 } from "@angular/core";
 import { RouterOutlet, Router } from "@angular/router";
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
 	selector: "app-frame",
 	standalone: true,
-	imports: [RouterOutlet],
+	imports: [RouterOutlet, FooterComponent],
 	templateUrl: "./frame.component.html",
 	styleUrl: "./frame.component.css",
 })

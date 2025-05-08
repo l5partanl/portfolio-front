@@ -27,6 +27,10 @@
         </nav>
     </aside>
 
+    <!-- ESPACIO DECORATIVO DERECHO -->
+    <aside class="side-space-right"></aside>
+
+
     <!-- Barra inferior con hamburguesa (solo visible en mobile) -->
     <div class="mobile-bottom-bar d-md-none">
         <button (click)="toggleMenu()">
@@ -42,6 +46,7 @@
     <!-- MAIN CONTENT -->
     <main class="main-content">
         <router-outlet></router-outlet>
+        <app-footer></app-footer>
     </main>
 
     <!-- Botón flotante para volver a Home -->

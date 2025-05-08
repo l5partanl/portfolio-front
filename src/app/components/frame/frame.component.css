@@ -11,14 +11,29 @@ body {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 60px 1fr auto;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "header header"
-    "sidebar main";
+    "header header header"
+    "sidebar main rightbox"
+    "sidebar footer rightbox";  
   box-sizing: border-box;
   position: fixed;
   inset: 0;
+}
+
+.side-space-right {
+  grid-area: rightbox;
+  background-color: var(--accent-color);
+  border-left: 1px solid var(--primary-color);
+  z-index: 1;
+  min-width: 80px;
+}
+
+@media (max-width: 768px) {
+  .side-space-right {
+    display: none;
+  }
 }
 
 /* HEADER */
@@ -170,7 +185,9 @@ body {
 /* MAIN CONTENT */
 .main-content {
   grid-area: main;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   overflow-y: auto;
   box-sizing: border-box;
   transition: filter 0.3s ease;
@@ -282,8 +299,8 @@ body {
 /* Estilo base + hover mejorado */
 .btn-floating-home {
   position: fixed;
-  bottom: 4rem;
-  right: 2rem;
+  bottom: 5rem;
+  right: 7rem;
   z-index: 1000;
   padding: 0.5rem 1.4rem;
   font-size: 0.95rem;
@@ -304,4 +321,14 @@ body {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+}
+
+
+
+router-outlet {
+  flex: 1 0 auto;
+}
+
+app-footer {
+  flex-shrink: 0;
 }

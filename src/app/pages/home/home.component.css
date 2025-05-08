@@ -1,27 +1,173 @@
-.intro-screen {
-  position: fixed;
+.section-intro {
+  position: absolute;
   inset: 0;
-  background-color: #111;
-  z-index: 9999;
-  padding: 2rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 10vw;
+  text-align: left;
+  background: linear-gradient(135deg, var(--pill-color-start), var(--pill-color-end));
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease infinite, fadeOutIntro 5.8s ease forwards;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
 }
 
-.fade-in {
-  animation: fadeIn 1s ease-out both;
+.section-intro .hello {
+  font-family: cursive;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  transform: rotate(-4deg) translateX(-20px) translateY(10px);
+  margin-bottom: 0.5rem;
 }
 
-@keyframes fadeIn {
+.section-intro h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 1.4s steps(12, end) 0.8s forwards;
+  position: relative;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.section-intro h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -4px;
+  width: 3px;
+  height: 100%;
+  background-color: var(--primary-color);
+  animation: blink 0.8s step-end infinite;
+}
+
+.section-intro h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 0.8rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out 3s forwards;
+}
+
+@keyframes typing {
   from {
-    opacity: 0;
-    transform: translateY(8px);
+    width: 0;
   }
+  to {
+    width: 20ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slideUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+.progress-line {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 2rem;
+}
 
+.arrow-progress {
+  display: inline-block;
+  position: relative;
+  height: 0.5rem;
+  width: 3rem;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.arrow-progress::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1rem;
+  background: var(--primary-color);
+  border-radius: 999px;
+  left: 0;
+  animation: moveArrow 2.4s ease-in-out infinite;
+}
+
+@keyframes moveArrow {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutIntro {
+  0% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInContent 2.8s ease-out 7.2s forwards;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 
