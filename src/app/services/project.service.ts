@@ -2,13 +2,14 @@ import { inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { lastValueFrom } from "rxjs";
 import type { Project } from "../interfaces/project.interface";
+import { environment } from "../../environments/environment";
 
 @Injectable({
 	providedIn: "root",
 })
 export class ProjectService {
 	private httpClient = inject(HttpClient);
-	private baseUrl = "http://localhost:3000/api/projects";
+	private baseUrl = environment.apiUrl;
 
 	project: Project | null = null;
 
