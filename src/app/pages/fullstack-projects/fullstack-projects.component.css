@@ -21,6 +21,11 @@
   animation: textAppear 3s ease forwards;
 }
 
+p{
+  width: 80%;
+  margin: 0 auto;
+}
+
 /* animación de entrada y salida de la intro */
 @keyframes fadeInOut {
   0% { opacity: 0; }
