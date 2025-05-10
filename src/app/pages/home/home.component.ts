@@ -45,7 +45,8 @@ export class HomeComponent implements AfterViewInit {
 			}
 		}, 8000);
 
-		if (scrollContainer) {
+		// Evita el conflicto con mobile: solo activa scroll handler en desktop
+		if (scrollContainer && !this.isMobile()) {
 			scrollContainer.addEventListener("scroll", this.handleScrollOnce, {
 				passive: true,
 				once: true,
@@ -53,8 +54,38 @@ export class HomeComponent implements AfterViewInit {
 		}
 
 		// Tooltips solo en desktop
-		if (window.innerWidth > 768) {
+		if (!this.isMobile()) {
 			this.setupTooltips();
+		}
+
+		// Solo en mobile: efecto bounce al click
+		if (this.isMobile()) {
+			const wrappers = document.querySelectorAll(".preview-wrapper");
+
+			for (const wrapper of wrappers) {
+				wrapper.addEventListener("click", (event) => {
+					const link = wrapper.querySelector("a");
+
+					// Si hay un enlace, prevenimos la navegación
+					if (link?.getAttribute("href")) {
+						event.preventDefault();
+
+						wrapper.classList.add("clicked");
+
+						setTimeout(() => {
+							wrapper.classList.remove("clicked");
+							// Ir al link manualmente
+							window.location.href = link.getAttribute("href") || "";
+						}, 500); // suficiente para ver el bounce
+					} else {
+						// Si no hay enlace, solo el efecto visual
+						wrapper.classList.add("clicked");
+						setTimeout(() => {
+							wrapper.classList.remove("clicked");
+						}, 500);
+					}
+				});
+			}
 		}
 	}
 
@@ -79,6 +110,11 @@ export class HomeComponent implements AfterViewInit {
 		const scrollContainer = document.querySelector(".main-content");
 		scrollContainer?.removeEventListener("scroll", this.handleScrollOnce);
 	};
+
+	// NUEVA función para detectar móviles
+	isMobile(): boolean {
+		return window.innerWidth <= 768;
+	}
 
 	setupTooltips(): void {
 		const wrappers = document.querySelectorAll(".preview-wrapper");

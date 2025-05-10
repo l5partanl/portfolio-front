@@ -16,7 +16,7 @@
 }
 
 .section-intro .hello {
-  font-family: cursive;
+font-family: 'Dancing Script', cursive;
   font-weight: 400;
   font-size: 1.5rem;
   color: var(--text-dark);
@@ -386,16 +386,28 @@
       display: none;
     }
   
-    .preview-wrapper {
-      all: unset;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 100vw;
-      margin: 2rem auto;
-      position: relative;
-      pointer-events: auto;
-    }
+  .preview-wrapper {
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80vw;
+    margin: 2rem auto;
+    position: relative;
+    pointer-events: auto;
+  }
+
+  /* Elementos impares alineados a la izquierda */
+  .preview-wrapper:nth-child(odd) {
+    margin-left: 0;
+  }
+
+  /* Elementos pares alineados a la derecha */
+  .preview-wrapper:nth-child(even) {
+    margin-right: 0;
+  }
+
+
   
     .preview-wrapper img {
       width: 100%;
@@ -406,11 +418,11 @@
     
     .preview-box {
       position: absolute;
-      right: -115px;
-      top: 45%;
+      margin: 0 auto;
+      left: 45%;
+      top: 35%;
       opacity: 1;
-      pointer-events: auto;
-
+      pointer-events: none;
     }
     
     /* Mostrar data-text con mismo estilo que antes */
@@ -418,10 +430,10 @@
       content: attr(data-text);
       display: block;
       color: white;
-      padding: 0.5rem 0.9rem;
       white-space: nowrap;
       font-weight: 500;
       text-align: center;
+      transform: scale(.75);
     }
     
     .obj:hover {
@@ -429,5 +441,70 @@
       filter: none;
       cursor: default;
     }
+
+  .scroll-hint.visible {
+    animation: fadeInAndOutMobile 12s ease forwards;
+  }
+
+  @keyframes fadeInAndOutMobile {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    83% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+/* movile animations */
+
+ .preview-wrapper img {
+    animation: floatIdle 4.5s ease-in-out infinite;
+    transition: transform 0.2s ease;
+  }
+
+  .preview-wrapper.clicked img {
+    animation: bounceClick 0.4s ease;
+  }
+  
+@keyframes floatIdle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+    70% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes bounceClick {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.05) translateY(-4px) ;
+  }
+  50% {
+    transform: scale(1) translateY(2px);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
   }
   
