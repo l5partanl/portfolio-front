@@ -64,10 +64,12 @@
 .about-bio {
   display: flex;
   gap: 3rem;
+  min-height: calc(100vh - 412px);
   max-width: 960px;
-  margin: 4rem auto;
+  margin: 0 auto;
+  margin-top: 3rem;
   padding: 2rem;
-  margin-bottom: 140px;
+  margin-bottom: 100px;
   align-items: center;
   flex-wrap: wrap;
 }
